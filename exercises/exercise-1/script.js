@@ -21,3 +21,12 @@ const greekGods = [
   "Poseidon",
   "Zeus",
 ];
+
+for (let i = 0; i < greekGods.length; i++) {
+  console.log(`${i}. ${greekGods[i]}`);
+}
+
+
+setTimeout(() => {
+  console.log(`2. ${greekGods[2]}`);
+}, 2000);

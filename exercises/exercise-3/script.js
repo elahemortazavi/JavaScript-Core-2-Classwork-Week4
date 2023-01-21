@@ -46,10 +46,21 @@ Create a function called "showMovies" that
 
 */
 
-function showMovies() {
-  // add code here
-}
 
+
+function showMovies() {
+  const allMovies = document.getElementById("allMovies");
+  const moviesNumber = document.getElementById("moviesNumber");
+
+  for (let i = 0; i < movies.length; i++) {
+    const movie = movies[i];
+    const p = document.createElement("p");
+    p.innerText = `${movie.title} - ${movie.director}`;
+    allMovies.appendChild(p);
+  }
+
+  moviesNumber.innerText = `Total number of movies: ${movies.length}`;
+}
 
 /*
 
@@ -62,13 +73,29 @@ How many movies can you see on your page?
 
 */
 
-const myFavMovie = {
-  // add code here
+// const myFavMovie = {
+//   // add code here
+// }
+
+// function addMovie(movie, callback) {
+//   // add code here
+// }
+
+function addMovie(newMovie) {
+  setTimeout(() => {
+    movies.push(newMovie);
+    showMovies();
+  }, 2000);
 }
 
-function addMovie(movie, callback) {
-  // add code here
-}
+const myFavoriteMovie = {
+  title: "The Matrix",
+  director: "The Wachowski Brothers",
+  type: "sci-fi",
+  haveWatched: true
+};
+
+addMovie(myFavoriteMovie);
 
 /*
 
@@ -78,6 +105,21 @@ Hint: use callbacks
 
 */
 
+function addMovie(newMovie, callback) {
+  setTimeout(() => {
+    movies.push(newMovie);
+    callback();
+  }, 2000);
+}
+
+const myFavoriteMovie = {
+  title: "The Matrix",
+  director: "The Wachowski Brothers",
+  type: "sci-fi",
+  haveWatched: true
+};
+
+addMovie(myFavoriteMovie, showMovies);
 
 
 /*
@@ -92,3 +134,23 @@ Task 4 - **Extra**
 Hint: Use the functions you created on tasks 1-3
 
 */
+
+const form = document.getElementById("addMovies");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const title = document.getElementById("title").value;
+  const director = document.getElementById("director").value;
+  const type = document.getElementById("type").value;
+  const haveWatched = document.getElementById("haveWatched").checked;
+
+  const newMovie = {
+    title: title,
+    director: director,
+    type: type,
+    haveWatched: haveWatched
+  };
+
+  movies.push(newMovie);
+  showMovies();
+});
