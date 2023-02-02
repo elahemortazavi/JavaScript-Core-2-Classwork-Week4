@@ -154,3 +154,11 @@ form.addEventListener("submit", (event) => {
   movies.push(newMovie);
   showMovies();
 });
+
+
+
+
+// ADRIAN SOLUTION:
+https://gist.github.com/adrianHards/85244e2734981d86facd97bc8aed2831
+
+https://codepen.io/makanti/pen/MWwMgmW?editors
